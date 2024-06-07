@@ -1,0 +1,146 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+    <!--For First Name -->
+    <div class="form-group">
+        <label for="custFirstName">First Name</label>
+        <input type="text" class="form-control" name="custFirstName" #custFirstName="ngModel" required
+            [(ngModel)]="service.newCustomer.custFirstName">
+        <div *ngIf="custFirstName.touched && custFirstName.invalid" class="text-danger">
+            First name is required
+        </div>
+    </div>
+
+    <!--For Last Name -->
+    <div class="form-group">
+        <label for="custLastName">Last Name</label>
+        <input type="text" class="form-control" name="custLastName" #custLastName="ngModel" required
+            [(ngModel)]="service.newCustomer.custLastName">
+        <div *ngIf="custLastName.touched && custLastName.invalid" class="text-danger">
+            Last name is required
+        </div>
+    </div>
+
+
+    <!--For Occupation-->
+    <div class="form-group">
+        <label for="custOccupation">Occupation</label>
+        <input type="text" class="form-control" name="custOccupation" #custOccupation="ngModel" required
+            [(ngModel)]="service.newCustomer.custOccupation" />
+        <div *ngIf="custOccupation.touched && custOccupation.invalid" class="text-danger">
+            Occupation is Required.
+        </div>
+    </div>
+
+    <!--For Address-->
+    <div>
+        <label for="custAddress">Address</label>
+        <textarea class="form-control" name="custAddress" #custAddress="ngModel" required
+            [(ngModel)]="service.newCustomer.custAddress"></textarea>
+        <div *ngIf="custAddress.touched && custAddress.invalid" class="text-danger">
+            Address is Required.
+        </div>
+    </div>
+
+    <!--For Phone-->
+    <div class="form-group">
+        <label for="custPhone">Phone</label>
+        <input type="text" class="form-control" name="custPhone" #custPhone="ngModel" required
+            [(ngModel)]="service.newCustomer.custPhone" />
+        <div *ngIf="custPhone.touched && custPhone.invalid" class="text-danger">
+            Occupation is Required.
+        </div>
+    </div>
+
+    <!--For Aadhar-->
+    <div class="form-group">
+        <label for="custAadhar">Aadhar Number</label>
+        <input type="text" class="form-control" name="custAadhar" #custAadhar="ngModel" required
+            [(ngModel)]="service.newCustomer.custAadhar" />
+        <div *ngIf="custAadhar.touched && custAadhar.invalid" class="text-danger">
+            Occupation is Required.
+        </div>
+    </div>
+
+    <!--For Gender-->
+    <div class="form-group">
+        <label>Gender</label><br>
+        <!--Male-->
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="custGender" id="maleGender" value="M"
+                [(ngModel)]="service.newCustomer.custGender">
+            <label class="form-check-label" for="maleGender">Male</label>
+        </div>
+        <!--Female-->
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="custGender" id="femaleGender" value="F"
+                [(ngModel)]="service.newCustomer.custGender">
+            <label class="form-check-label" for="femaleGender">Female</label>
+        </div>
+
+        <!--Other -->
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="custGender" id="otherGender" value="O"
+                [(ngModel)]="service.newCustomer.custGender">
+            <label class="form-check-label" for="otherGender">Female</label>
+        </div>
+
+    </div>
+
+    <!--For Date of Birth -->
+    <div class="form-group">
+        <label for="custDob">Date of Birth</label>
+        <input type="date" class="form-control" name="custDob" #custDob="ngModel" required
+            [(ngModel)]="service.newCustomer.custDob" />
+        <div *ngIf="custDob.touched && custDob.invalid" class="text-danger">
+            Dob is Required.
+        </div>
+    </div>
+
+    <!--For Nationality-->
+    <div class="form-group">
+        <label>Nationality</label><br>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="custNationality" value="Indian"
+                [(ngModel)]="service.newCustomer.custNationality" required>
+            <label class="form-check-label">Indian</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="custNationality" value="Not Indian"
+                [(ngModel)]="service.newCustomer.custNationality" required>
+            <label class="form-check-label">Not Indian</label>
+        </div>
+    </div>
+
+
+    <!--For Annual income -->
+    <div class="form-group">
+        <label for="custAnnualIncome">Annual Income</label>
+        <input type="number" class="form-control" name="custAnnualIncome" #custAnnualIncome="ngModel" required
+            [(ngModel)]="service.newCustomer.custAnnualIncome" />
+        <div *ngIf="custAnnualIncome.touched && custAnnualIncome.invalid" class="text-danger">
+            Annual Income is Required.
+        </div>
+    </div>
+
+<!-- Employment status -->
+<div class="form-group">
+    <label for="custEmploymentStatus">Employment Status</label>
+    <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" [(ngModel)]="service.newCustomer.custEmploymentStatus" name="custEmploymentStatus" #custEmploymentStatus="ngModel" id="custEmploymentStatus">
+      <label class="custom-control-label" for="custEmploymentStatus"></label>
+    </div>
+  </div>
+  
+  <!-- Marital Status -->
+  <div class="form-group">
+    <label for="custMaritalStatus">Marital Status</label>
+    <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" [(ngModel)]="service.newCustomer.custMaritalStatus" name="custMaritalStatus" #custMaritalStatus="ngModel" id="custMaritalStatus">
+      <label class="custom-control-label" for="custMaritalStatus"></label>
+    </div>
+  </div>
+  
+
+
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Register</button>
+</form>
