@@ -1,0 +1,75 @@
+
+
+
+
+<div class="row">
+    <div class="col-md-6">
+
+        <table class="table">
+            <thead>
+                <th>Loan Name</th>
+                <th>Loan Category</th>
+                <th>Loan Amount</th>
+                <th>Loan Status</th>
+            </thead>
+        
+            <tbody>
+                <tr *ngFor="let l of this.service.CustomerLoanDetailsArray">
+                    <td>{{l.loanName}}</td>
+                    <td>{{l.loanCategory}}</td>
+                    <td>{{l.loanAmountTaken}}</td>
+                    <td>
+                        <span *ngIf="l.loanStatus; else inactiveIcon">
+                          <i class="fa fa-check-circle"></i> <!-- Font Awesome icon for active -->
+                        </span>
+                        <ng-template #inactiveIcon>
+                          <i class="fa fa-times-circle"></i> <!-- Font Awesome icon for inactive -->
+                        </ng-template>
+                      </td>
+                      <td><button class="btn btn-outline-danger"(click)="loanDetails(l)" >Details</button></td>
+                </tr>
+              
+            </tbody>
+        </table>
+
+    </div>
+    <div class="col-md-3">
+
+        <div *ngIf="showloanDetails">
+
+            <h2>Loan Details</h2>
+            <button class="btn btn-sm btn-outline-danger" (click)="closeLoanDetail()" >X</button>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><b>Customer Name :</b></td>
+                        <td>{{LoanDetails.customerName}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Loan Name :</b></td>
+                        <td>{{LoanDetails.loanName}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Loan Category :</b></td>
+                        <td>{{LoanDetails.loanCategory}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Loan Amount :</b></td>
+                        <td>{{LoanDetails.loanAmountTaken}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Amount To Pay :</b></td>
+                        <td class="text-danger">{{LoanDetails.amountToPay}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Amount Payed :</b></td>
+                        <td class="text-success">{{LoanDetails.amountPayed}}</td>
+                    </tr>
+        
+                   
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
