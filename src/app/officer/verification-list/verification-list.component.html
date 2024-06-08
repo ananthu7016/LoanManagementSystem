@@ -1,0 +1,93 @@
+
+
+
+
+   
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <table class="table">
+
+                <thead>
+                    <th>Customer Name</th>
+                    <th>Loan Name</th>
+                    <th>Requested Amount</th>
+                </thead>
+                         
+                <tbody>
+                    <tr *ngFor="let v of service.listOfVerificationDetails">
+                       <td>{{v.customerName}}</td>
+                       <td>{{v.loanName}}</td>
+                       <td>{{v.loanAmount}}</td>
+                       <td><button class="btn btn-outline-danger" (click)="showDetailedToVerify(v)" >Details</button></td>
+                    </tr>
+                </tbody>
+                </table>
+
+        </div>
+
+        <div class="col-md-6" *ngIf="showVerificationDetailToggle">
+
+            <div>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><h2>Customer Name :</h2></td>
+                            <td><h2>{{selectedDetail.customerName}}</h2></td>
+                        </tr>
+                        <tr>
+                            <td><h2>Loan Name :</h2></td>
+                            <td><h2>{{selectedDetail.loanName}}</h2></td>
+                        </tr>
+        
+            
+                        <tr>
+                            <td><b>Amount Requested :</b></td>
+                            <td><h2>{{selectedDetail.loanAmount}}</h2></td>
+                        </tr>
+        
+                        <tr>
+                            <td><b>Loan Purpose :</b></td>
+                            <td><i>{{selectedDetail.loanPurpose}}</i></td>
+                        </tr>
+        
+                          
+                        <tr>
+                            <td><b> Phone:</b></td>
+                            <td><i>{{selectedDetail.customerContact}}</i></td>
+                        </tr>
+                        <tr>
+                            <td><b>Address:</b></td>
+                            <td><i>{{selectedDetail.customerAddress}}</i></td>
+                        </tr>
+        
+                        <tr>
+                            <td><b>Occupation:</b></td>
+                            <td><i>{{selectedDetail.customerOccupation}}</i></td>
+                        </tr>
+                          
+                        <tr>
+                            <td><b>Annual Income:</b></td>
+                            <td><i>{{selectedDetail.customerAnnualIncome}}</i></td>
+                        </tr>
+        
+                        <tr>
+                            <td><b>Gender</b></td>
+                            <td><i>{{selectedDetail.customerGender}}</i></td>
+                        </tr>
+                        <tr>
+                            <td><b>Nationality:</b></td>
+                            <td><i>{{selectedDetail.customerNationality}}</i></td>
+                        </tr>
+        
+            
+            
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+
+        </div>
+    </div>
