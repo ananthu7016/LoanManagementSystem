@@ -1,1 +1,112 @@
-<p>apply-loan works!</p>
+<div class="row">
+
+    <div class="col-md-6">
+
+
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+            <label>Loan Category</label>
+            <select class="form-control">
+                <option value="0">--Select a Category--</option>
+                <option value="1">Educational Loan</option>
+                <option value="2">Vehicle Loan</option>
+                <option value="3">Home Loan</option>
+            </select>
+
+            <label>Loans</label>
+            <select class="form-control" (change)="onLoanSelected($event.target.value)"
+            name="loanId" #loanId="ngModel" [(ngModel)]="service.detailsOfLoanToApply.loanId" >
+                <option value="0">--Select Loan--</option>
+                <option *ngFor="let l of service.DetailsOfAllLoans" [value]="l.loanId">{{l.loanName}}</option>
+            </select>
+
+            <label>Loan Amount</label>
+            <input type="number" class="form-control" 
+            name="requestedAmount" #requestedAmount="ngModel"  [(ngModel)]="service.detailsOfLoanToApply.requestedAmount" />
+            
+            <label>Loan Purpose</label>
+            <textarea placeholder="Enter Purpose of Loan" name="loanPurpose" #loanPurpose="ngModel"
+            [(ngModel)]="service.detailsOfLoanToApply.loanPurpose" class="form-control" ></textarea>
+
+            <label>Re Payment Frequency</label>
+            <select name="repaymentFrequency" #repaymentFrequency="ngModel" [(ngModel)]="service.detailsOfLoanToApply.repaymentFrequency" class="form-control" >
+                <option value="0">--Select Months--</option>
+                <option value="1">--One Months--</option>
+                <option value="2">--Two Months--</option>
+            </select>
+
+            <button type="submit" class="btn btn-outline-primary" >Apply</button>
+
+        </form>
+
+    </div>
+
+    <div class="col-md-6" *ngIf="service.loanSelectedToogle">
+
+        <h2>Details of Loan</h2>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>
+                        <b>Loan Name</b>
+                    </td>
+                    <td>
+                        <b>{{service.SelectedLoan.loanName}}</b>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <b>Intrest Rate</b>
+                    </td>
+                    <td>
+                        <b>{{service.SelectedLoan.loanIntrestRate}} %</b>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <b>Minumum Amount</b>
+                    </td>
+                    <td>
+                        <b>{{service.SelectedLoan.loanMinimumAmount}}</b>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <b>Maximum Amount</b>
+                    </td>
+                    <td>
+                        <b>{{service.SelectedLoan.loanMaximumAmount}}</b>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <b>Late Payment Penality</b>
+                    </td>
+                    <td>
+                        <b>{{service.SelectedLoan.latePaymentPenalty}}</b>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <b>Loan Term</b>
+                    </td>
+                    <td>
+                        <b>{{service.SelectedLoan.loanTerm}} Months</b>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+

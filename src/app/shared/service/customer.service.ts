@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {Customer} from 'src/app/shared/model/customer';
+import {ApplyLoan} from 'src/app/shared/model/apply-loan';
+import {LoanDetails} from 'src/app/shared/model/loan-details';
 import {CustomerLoanDetails} from 'src/app/shared/model/customer-loan-details';
 import { error } from '@angular/compiler/src/util';
 import { Observable } from 'rxjs';
@@ -61,4 +63,62 @@ export class CustomerService {
 
 
   //#endregion
+
+
+  //#region  Get Details of All Available loans to fill in the DropDown 
+
+  DetailsOfAllLoans:LoanDetails[] =[];
+
+  GetAllDetailsOfLoanForDropdown(){
+
+    this.httpClient.get('https://localhost:7285/api/Customer/Loans')
+    .toPromise()
+    .then((response:any)=>{
+      console.log('The Response that we get after sending a request to get all available loans the response that we get is',response);
+
+      // then we need to assign the response to the Global instance
+      try{
+        this.DetailsOfAllLoans = response; 
+        console.log('The response if assigned to Globale instance succesfully');
+      }
+      catch(error){}
+
+    })
+    .catch((error)=>{
+      console.log('Some Error Occured');
+    });
+
+  }
+
+  //#endregion
+
+
+  //#region  On Selecting a Loan From DropDown 
+      SelectedLoan: LoanDetails=new LoanDetails();
+      loanSelectedToogle:boolean=false;
+
+  getDetailsOfSelectedLoan(id:number){
+
+      this.SelectedLoan = this.DetailsOfAllLoans.find(y=>y.loanId == id);
+      console.log('The Details of loans selected by the customer is ',this.SelectedLoan);
+      // then we need to Show the div that show the details 
+      this.loanSelectedToogle=true;
+  }
+
+  //#endregion
+
+
+  //#region  Apply for a loan 
+
+  showApplyLoanForm:boolean = false;
+
+  detailsOfLoanToApply:ApplyLoan = new ApplyLoan();
+
+
+  ApplyLoanByCustomer(detail:ApplyLoan):Observable<any>{
+    return this.httpClient.post('https://localhost:7285/api/Customer/Apply',detail);
+  }
+
+  //#endregion
+
 }

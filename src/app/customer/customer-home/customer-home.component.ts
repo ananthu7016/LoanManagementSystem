@@ -41,6 +41,8 @@ export class CustomerHomeComponent implements OnInit {
 
     // then we need to show the Div that store loan Details 
     this.showloanDetails= true;
+
+    this.service.showApplyLoanForm=false;
   }
 
   //#endregion
@@ -52,6 +54,18 @@ export class CustomerHomeComponent implements OnInit {
   closeLoanDetail():void{
     this.showloanDetails= false;
   }
+
+  //#endregion
+
+
+
+  //#region Show loan details form 
+
+  showLoanForm(){
+    this.showloanDetails= false;
+    this.service.showApplyLoanForm=true;
+  }
+ 
 
   //#endregion
   
