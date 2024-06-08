@@ -5,7 +5,7 @@ import { CustomerComponent } from './customer/customer.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent,loadChildren: ()=>import('./login/login.module').then(x=> x.LoginModule)},
-  {path:'register',component:CustomerComponent,loadChildren: ()=>import('./customer/customer.module').then(x=>x.CustomerModule)}
+  {path:'customer',component:CustomerComponent,loadChildren: ()=>import('./customer/customer.module').then(x=>x.CustomerModule)}
 ];
 
 @NgModule({

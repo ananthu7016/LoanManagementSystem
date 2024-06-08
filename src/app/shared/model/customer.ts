@@ -21,4 +21,7 @@ export class Customer {
     userId:number=0;
     custStatus:boolean=true;
     //#endregion
+
+
+    
 }
