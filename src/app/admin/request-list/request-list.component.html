@@ -1,50 +1,71 @@
-<table class="table">
+<div class="row">
 
-<thead>
-    <th>Customer Name</th>
-    <th>Loan Name</th>
-    <th>Requested Amount</th>
-</thead>
-         
-<tbody>
-    <tr *ngFor="let r of service.ListOfRequestRecived">
-       <td>{{r.customerName}}</td>
-       <td>{{r.loanName}}</td>
-       <td>{{r.requestedAmount}}</td>
-       <td><button class="btn btn-outline-danger" (click)="showDetailedRequest(r)" >Details</button></td>
-    </tr>
-</tbody>
-</table>
+    <div class="col-md-6">
 
-<div>
-    
-    <table class="table">
-        <tbody>
-            <tr>
-                <td><h2>Customer Name :</h2></td>
-                <td><h2>{{detailsOfRequest.customerName}}</h2></td>
-            </tr>
-            <tr>
-                <td><h2>Customer Name :</h2></td>
-                <td><h2>{{detailsOfRequest.loanName}}</h2></td>
-            </tr>
+        <table class="table">
 
-            <tr>
-                <td><b>Loan Request Date:</b></td>
-                <td><i>{{detailsOfRequest.loanRequestDate}}</i></td>
-            </tr>
-
-            <tr>
-                <td><b>Loan Purpose :</b></td>
-                <td><i>{{detailsOfRequest.loanPurpose}}</i></td>
-            </tr>
-
-            <tr>
-                <td><b>Amount Requested :</b></td>
-                <td><h2>{{detailsOfRequest.requestedAmount}}</h2></td>
-            </tr>
+            <thead>
+                <th>Customer Name</th>
+                <th>Loan Name</th>
+                <th>Requested Amount</th>
+            </thead>
+                     
+            <tbody>
+                <tr *ngFor="let r of service.ListOfRequestRecived">
+                   <td>{{r.customerName}}</td>
+                   <td>{{r.loanName}}</td>
+                   <td>{{r.requestedAmount}}</td>
+                   <td><button class="btn btn-outline-danger" (click)="showDetailedRequest(r)" >Details</button></td>
+                </tr>
+            </tbody>
+            </table>
             
-        </tbody>
-    </table>
+
+    </div>
+
+    <div class="col-md-6" *ngIf="showRequestDetailsToogle" >
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td><h2>Customer Name :</h2></td>
+                    <td><h2>{{detailsOfRequest.customerName}}</h2></td>
+                </tr>
+                <tr>
+                    <td><h2>Customer Name :</h2></td>
+                    <td><h2>{{detailsOfRequest.loanName}}</h2></td>
+                </tr>
+    
+                <tr>
+                    <td><b>Loan Request Date:</b></td>
+                    <td><i>{{detailsOfRequest.loanRequestDate}}</i></td>
+                </tr>
+    
+                <tr>
+                    <td><b>Loan Purpose :</b></td>
+                    <td><i>{{detailsOfRequest.loanPurpose}}</i></td>
+                </tr>
+    
+                <tr>
+                    <td><b>Amount Requested :</b></td>
+                    <td><h2>{{detailsOfRequest.requestedAmount}}</h2></td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+
+        <form (ngSubmit)="AssignOfficerForVerification()">
+            <label>Assign a Officer for Verification</label>
+            <select class="form-control" name="staffId" #staffId="ngModel" [(ngModel)]="detailsToAssignOfficer.staffId" >
+                <option>--Choose a Officer</option>
+                <option *ngFor="let o of service.detailsOfOfficer" [value]="o.id">{{o.name}}</option>
+            </select>
+    
+            <button class="btn btn-success">Assign</button>
+        </form>
+
+    </div>
 
 </div>
+
