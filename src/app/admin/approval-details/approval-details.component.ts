@@ -9,25 +9,47 @@ import { AdminService } from 'src/app/shared/service/admin.service';
 })
 export class ApprovalDetailsComponent implements OnInit {
 
-  constructor(public service:AdminService) { }
+  constructor(public service: AdminService) { }
 
   ngOnInit(): void {
   }
 
 
   //#region Approve Loan 
-  ApproveLoan(){
- 
+  ApproveLoan() {
+
     // so when this method is called we need to subscribe to the observable 
 
     this.service.ApproveLoan(this.service.selectedApprovalDetail)
-    .subscribe((response)=>{
-      console.log('This is the response that we get after subscribing to a Observable , the response is ',response);
-    },
-  (error)=>{
-    console.log('The error we get after subscribing the observable to Approve a loan is ',error);
-  })
+      .subscribe((response) => {
+        console.log('This is the response that we get after subscribing to a Observable , the response is ', response);
+      },
+        (error) => {
+          console.log('The error we get after subscribing the observable to Approve a loan is ', error);
+        })
 
   }
   //#endregion
+
+
+
+  //#region Reject Loan
+
+  RejectLoan() {
+
+    // so when this method is called we need to subscribe to the observable 
+
+    this.service.RejectLoan(this.service.selectedApprovalDetail)
+      .subscribe((response) => {
+        console.log('This is the response that we get after subscribing to a Observable , the response is ', response);
+      },
+        (error) => {
+          console.log('The error we get after subscribing the observable to Reject a loan is ', error);
+        })
+
+  }
+
+
+  //#endregion
+
 }

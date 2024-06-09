@@ -1,13 +1,20 @@
-
 <table class="table">
     <tbody>
         <tr>
-            <td><h2>Customer Name :</h2></td>
-            <td><h2>{{service.selectedApprovalDetail.customerName}}</h2></td>
+            <td>
+                <h2>Customer Name :</h2>
+            </td>
+            <td>
+                <h2>{{service.selectedApprovalDetail.customerName}}</h2>
+            </td>
         </tr>
         <tr>
-            <td><h2>Loan Name :</h2></td>
-            <td><h2>{{service.selectedApprovalDetail.loanName}}</h2></td>
+            <td>
+                <h2>Loan Name :</h2>
+            </td>
+            <td>
+                <h2>{{service.selectedApprovalDetail.loanName}}</h2>
+            </td>
         </tr>
 
         <tr>
@@ -22,11 +29,13 @@
 
         <tr>
             <td><b>Amount Requested :</b></td>
-            <td><h2>{{service.selectedApprovalDetail.loanAmount}}</h2></td>
+            <td>
+                <h2>{{service.selectedApprovalDetail.loanAmount}}</h2>
+            </td>
         <tr>
-            <td><button class="btn btn-success" (click)="ApproveLoan()" >Approve</button></td>
-            <td><button class="btn btn-danger"(click)="service.RejectLoan()" >Reject</button></td>
+            <td><button class="btn btn-success" (click)="ApproveLoan()">Approve</button></td>
+            <td><button class="btn btn-danger" (click)="RejectLoan()">Reject</button></td>
         </tr>
-        
+
     </tbody>
 </table>

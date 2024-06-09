@@ -32,10 +32,12 @@ export class RequestListComponent implements OnInit {
     // then we need to store it to a local instace
     this.detailsOfRequest = details;
 
-    
+    // then we need hide the component which displays the details of Approval
+    this.service.showApprovalToggle = false;
+
     // then we need to show the details of Request 
-    this.showRequestDetailsToogle = true;
-    
+    this.service.showRequestDetailsToogle = true;
+
 
   }
 
@@ -70,9 +72,5 @@ export class RequestListComponent implements OnInit {
   //#endregion
 
 
-  //#region Show or hide Details of Request Div
-  showRequestDetailsToogle:boolean=false;
-
-  //#endregion
 
 }
