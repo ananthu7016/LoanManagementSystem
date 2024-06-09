@@ -87,7 +87,15 @@
                     </tbody>
                 </table>
             </div>
+
+
+            <form (ngSubmit)="onSubmit()">
+                <textarea placeholder="Enter Review of verification" name="name" #name="ngModel" [(ngModel)]="verificationReview.name" class="form-control"></textarea>
+                <button class="btn btn-success" type="submit" >Sumbit</button>
+            </form>
         
 
         </div>
+
+
     </div>
