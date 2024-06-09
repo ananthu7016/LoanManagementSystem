@@ -6,6 +6,7 @@ import { DropDown } from '../model/drop-down';
 import { error } from '@angular/compiler/src/util';
 import { Observable } from 'rxjs';
 import { AssignOfficer } from '../model/assign-officer';
+import { ApprovalDetails } from '../model/approval-details';
 
 @Injectable({
   providedIn: 'root'
@@ -72,9 +73,56 @@ GetDetailsOfAllOfficer(){
 AssignOfficerForVerification(details:AssignOfficer):Observable<any>{
   return this.httpClient.post('https://localhost:7285/api/Admin/Assign',details);
 }
+//#endregion
 
 
+
+//#region Get Details of All Loans to Approve 
+
+// decalaring an array of instance to show the details
+listOfLoansToApprove:ApprovalDetails[]=[];
+
+
+GetDetailsOfLoansToApprove(){
+
+  this.httpClient.get('https://localhost:7285/api/Admin/ToApprove')
+  .toPromise()
+  .then((response:any)=>{
+    console.log('we have recieved the response send to get the details of all loans to Approve the response is',response);
+
+    // then we need to assign the response to the globale variable
+    this.listOfLoansToApprove = response;
+  })
+  .catch((error)=>{
+    console.log('Some error occured while getting the details of all the loans to approve. the error occured is',error);
+  })
+}
+//#endregion
+
+
+//#region  Show details of Selected details to approve
+
+selectedApprovalDetail:ApprovalDetails = new ApprovalDetails();
 
 //#endregion
+
+
+  //#region Approve Loan 
+  ApproveLoan(details:ApprovalDetails):Observable<any>{
+ 
+    return this.httpClient.post('https://localhost:7285/api/Admin/Approve',details)
+    // so the details of the selected loan is in the instance "selectedApprovalDetail"
+
+  }
+  //#endregion
+
+
+  //#region Reject Loan 
+
+  RejectLoan(){
+    
+  }
+
+  //#endregion
 
 }

@@ -1,0 +1,19 @@
+
+<table class="table">
+
+    <thead>
+        <th>Customer Name</th>
+        <th>Loan Name</th>
+        <th>Requested Amount</th>
+    </thead>
+             
+    <tbody>
+        <tr *ngFor="let a of service.listOfLoansToApprove">
+           <td>{{a.customerName}}</td>
+           <td>{{a.loanName}}</td>
+           <td>{{a.loanAmount}}</td>
+           <td><button class="btn btn-outline-danger" (click)="showDetailsToApprove(a)" >Details</button></td>
+        </tr>
+    </tbody>
+    </table>
+    
