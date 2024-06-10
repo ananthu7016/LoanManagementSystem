@@ -1,0 +1,20 @@
+<div class="collapse" id="navbarToggleExternalContent" [ngClass]="{'show': isCollapsed}" data-bs-theme="dark">
+    <div class="bg-dark p-4">
+
+      <h2 class="text-body-emphasis h4 text-light">User Name : {{this.loginService.userLoggedIn.userName}}</h2>
+
+    </div>
+  </div>
+  
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" (click)="toggleCollapse()" aria-controls="navbarToggleExternalContent" [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <button class="btn btn-danger" (click)="logOut()">LogOut</button>
+    </div>
+
+  </nav>
+
+
+  

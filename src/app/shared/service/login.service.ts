@@ -42,6 +42,9 @@ export class LoginService {
             // this is to make sure that if its a Wrong Credentials The username and password entered by the user stays in the Input field
             this.userLoggedIn.UserName = user.UserName;
             this.userLoggedIn.PassWord = user.PassWord;
+
+            // then we need to call a function to redirect to particular pages 
+            this.RedirectToRespectivePages();
           }
           catch (error) {
             console.log('There was some error While assigning the Response to Gloabal instance');
@@ -58,4 +61,32 @@ export class LoginService {
   }
 
   //#endregion
+
+
+
+  
+  //#region Redirect to respective pages based on credentials 
+
+  RedirectToRespectivePages(){
+
+    if(this.userLoggedIn != null){
+      // then based on the role id we need to redirect the user to respective pages 
+      if(this.userLoggedIn.roleId == 1){
+        // then we need to redirect to admin page 
+        this.router.navigate(['/admin']);
+      }
+      else if(this.userLoggedIn.roleId==2){
+        // then we need to redirect to customer Page 
+        this.router.navigate(['/customer'])
+      }
+      else if(this.userLoggedIn.roleId==3){
+        // the we need to redirect to Officer page 
+        this.router.navigate(['/officer'])
+      }
+    }
+
+  }
+
+  //#endregion
+
 }

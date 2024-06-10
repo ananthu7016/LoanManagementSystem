@@ -7,6 +7,8 @@ import { RequestListComponent } from './request-list/request-list.component';
 import { FormsModule } from '@angular/forms';
 import { ApprovalListComponent } from './approval-list/approval-list.component';
 import { ApprovalDetailsComponent } from './approval-details/approval-details.component';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { NavbarModule } from '../navbar/navbar.module';
 
 
 @NgModule({
@@ -14,7 +16,8 @@ import { ApprovalDetailsComponent } from './approval-details/approval-details.co
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    NavbarModule
   ]
 })
 export class AdminModule { }

@@ -5,6 +5,7 @@ import { OfficerRoutingModule } from './officer-routing.module';
 import { OfficerComponent } from './officer.component';
 import { VerificationListComponent } from './verification-list/verification-list.component';
 import { FormsModule } from '@angular/forms';
+import { NavbarModule } from '../navbar/navbar.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     OfficerRoutingModule,
-    FormsModule
+    FormsModule,
+    NavbarModule
   ]
 })
 export class OfficerModule { }
