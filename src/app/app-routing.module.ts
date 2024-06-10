@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'customer',component:CustomerComponent,loadChildren: ()=>import('./customer/customer.module').then(c=>c.CustomerModule)},
   {path:'admin',component:AdminComponent,loadChildren:()=>import('./admin/admin.module').then(a=>a.AdminModule)},
   {path:'officer',component:OfficerComponent,loadChildren:()=>import('./officer/officer.module').then(o=>o.OfficerModule)},
-  {path:'nav',component:NavbarComponent},
+  {path:'nav',component:NavbarComponent,loadChildren:()=>import('./navbar/navbar.module').then(n=>n.NavbarModule)},
   {path:'',redirectTo:'/login',pathMatch:'full'},
   {path:'**',redirectTo:'/login',pathMatch:'full'}
 ];

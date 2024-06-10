@@ -3,6 +3,7 @@ import { User } from '../model/user';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { error } from '@angular/compiler/src/util';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +27,7 @@ export class LoginService {
   ValidateUserCredentials(user: User): void {
 
 
-    this.httpClient.post('https://localhost:7285/api/Login/'+user.UserName+'/'+user.PassWord, user)
+    this.httpClient.post('https://localhost:7285/api/Login/' + user.UserName + '/' + user.PassWord, user)
       .toPromise()
       .then((response: any) => {
 
@@ -42,16 +43,17 @@ export class LoginService {
             // this is to make sure that if its a Wrong Credentials The username and password entered by the user stays in the Input field
             this.userLoggedIn.UserName = user.UserName;
             this.userLoggedIn.PassWord = user.PassWord;
+            this.userLoggedIn.password = user.PassWord;
 
             // then we need to set the token to local storage 
-            localStorage.setItem('Token',this.userLoggedIn.token);
+            localStorage.setItem('Token', this.userLoggedIn.token);
 
             // then we need to set the Id of the Logged in User to the local storage also
-            localStorage.setItem('Id',this.userLoggedIn.id.toString());
+            localStorage.setItem('Id', this.userLoggedIn.id.toString());
             // then we need to call a function to redirect to particular pages 
             this.RedirectToRespectivePages();
 
-            
+
           }
           catch (error) {
             console.log('There was some error While assigning the Response to Gloabal instance');
@@ -71,27 +73,41 @@ export class LoginService {
 
 
 
-  
+
   //#region Redirect to respective pages based on credentials 
 
-  RedirectToRespectivePages(){
+  RedirectToRespectivePages() {
 
-    if(this.userLoggedIn != null){
+    if (this.userLoggedIn != null) {
       // then based on the role id we need to redirect the user to respective pages 
-      if(this.userLoggedIn.roleId == 1){
+      if (this.userLoggedIn.roleId == 1) {
         // then we need to redirect to admin page 
         this.router.navigate(['/admin']);
       }
-      else if(this.userLoggedIn.roleId==2){
+      else if (this.userLoggedIn.roleId == 2) {
         // then we need to redirect to customer Page 
         this.router.navigate(['/customer'])
       }
-      else if(this.userLoggedIn.roleId==3){
+      else if (this.userLoggedIn.roleId == 3) {
         // the we need to redirect to Officer page 
         this.router.navigate(['/officer'])
       }
     }
 
+  }
+
+  //#endregion
+
+
+
+  //#region Update Credentials 
+
+  UpdateCredentials(newCredentials: User): Observable<any> {
+    // so the newCredentials recieved has only username and password we need to add UserId and Role to it 
+    newCredentials.id = this.userLoggedIn.id;
+    newCredentials.roleId = this.userLoggedIn.roleId;
+    // then we need to pass it to Api.
+    return this.httpClient.put('https://localhost:7285/api/Login/Credentials', newCredentials);
   }
 
   //#endregion

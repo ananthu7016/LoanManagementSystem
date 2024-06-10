@@ -19,8 +19,10 @@ export class User {
 
      UserName : string='';
      PassWord :string='';
-
+     password:string='';
     //#endregion
+
+
 
 
 }

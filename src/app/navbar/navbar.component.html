@@ -1,20 +1,48 @@
 <div class="collapse" id="navbarToggleExternalContent" [ngClass]="{'show': isCollapsed}" data-bs-theme="dark">
     <div class="bg-dark p-4">
 
-      <h2 class="text-body-emphasis h4 text-light">User Name : {{this.loginService.userLoggedIn.userName}}</h2>
+
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="text-body-emphasis h4 text-light">User Name : {{this.loginService.userLoggedIn.userName}}
+                </h1>
+
+            </div>
+
+            <div class="col-md-1">
+                <button class="btn btn-primary" (click)="showCredentialForm()" ><i class="fa fa-expeditedssl text-light"></i></button>
+            </div>
+
+            <div class="col-md-3" *ngIf="toggleCredetialsForm">
+                <i class="fa fa-expeditedssl text-light"> Manage Credentials</i>
+                <form #form="ngForm" (ngSubmit)="UpdateCredentials(form)" >
+                    <label class="text-light">Username</label>
+                    <input type="text" class="form-control" name="userName" #userName="ngModel" [(ngModel)]="loginService.userLoggedIn.userName" >
+                
+                    <hr>
+                
+                    <label class="text-light">Password</label>
+                    <input type="text" class="form-control" name="password" #password="ngModel" [(ngModel)]="loginService.userLoggedIn.password" >
+                
+                    <hr>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+                
+
+            </div>
+        </div>
 
     </div>
-  </div>
-  
-  <nav class="navbar navbar-dark bg-dark">
+</div>
+
+<nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-      <button class="navbar-toggler" type="button" (click)="toggleCollapse()" aria-controls="navbarToggleExternalContent" [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <button class="btn btn-danger" (click)="logOut()">LogOut</button>
+        <button class="navbar-toggler" type="button" (click)="toggleCollapse()"
+            aria-controls="navbarToggleExternalContent" [attr.aria-expanded]="!isCollapsed"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <button class="btn btn-danger" (click)="logOut()">LogOut</button>
     </div>
 
-  </nav>
-
-
-  
+</nav>
