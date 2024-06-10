@@ -38,7 +38,8 @@ export class CustomerService {
   //-----Declare an array to store the instance of Loan details of customer 
   CustomerLoanDetailsArray:CustomerLoanDetails[]=[];
   
-  GetLoansOfCustomer(custId:number):void{
+  GetLoansOfCustomer(custId:string):void{
+
 
     this.httpClient.get('https://localhost:7285/api/Customer/'+custId)
     .toPromise()

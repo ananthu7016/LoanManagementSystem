@@ -43,8 +43,15 @@ export class LoginService {
             this.userLoggedIn.UserName = user.UserName;
             this.userLoggedIn.PassWord = user.PassWord;
 
+            // then we need to set the token to local storage 
+            localStorage.setItem('Token',this.userLoggedIn.token);
+
+            // then we need to set the Id of the Logged in User to the local storage also
+            localStorage.setItem('Id',this.userLoggedIn.id.toString());
             // then we need to call a function to redirect to particular pages 
             this.RedirectToRespectivePages();
+
+            
           }
           catch (error) {
             console.log('There was some error While assigning the Response to Gloabal instance');

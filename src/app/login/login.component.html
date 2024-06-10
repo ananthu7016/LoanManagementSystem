@@ -24,10 +24,11 @@
       
         <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Login</button>
       </form>
-
+      <button class="btn btn-outline-success" (click)="ShowRegistrationForm()">Register</button>
     </div>
+ 
 
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="toggleRegistrationForm">
       <app-customer-register></app-customer-register>
     </div>
 

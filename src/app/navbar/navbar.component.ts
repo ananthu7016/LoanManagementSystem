@@ -26,6 +26,10 @@ export class NavbarComponent implements OnInit {
 
   //#region Logout
   logOut() {
+    
+    // first we need to remove the Token from the local storage 
+    localStorage.removeItem('Token');
+    localStorage.removeItem('Id');
     // then we need to log out 
     this.router.navigate(['/login']);
   }
