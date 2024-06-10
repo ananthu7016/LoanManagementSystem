@@ -7,19 +7,22 @@ export class User {
 
     //#region  For Storing Details Of Logged in User 
 
-    roleId :number;
-    userName :string;
-    id:number;
+    roleId :number=0;
+    userName :string='';
+    id:number=0;
+    token:string='';
 
     //#endregion
 
 
     //#region  For Maping User Credentials 
 
-     UserName : string;
-     PassWord :string;
-
+     UserName : string='';
+     PassWord :string='';
+     password:string='';
     //#endregion
+
+
 
 
 }

@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { ApplyLoanComponent } from './apply-loan/apply-loan.component';
+import { NavbarModule } from '../navbar/navbar.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ApplyLoanComponent } from './apply-loan/apply-loan.component';
     CommonModule,
     CustomerRoutingModule,
     FormsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    NavbarModule
   ]
 })
 export class CustomerModule { }

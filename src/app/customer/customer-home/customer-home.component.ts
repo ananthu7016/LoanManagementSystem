@@ -15,13 +15,14 @@ export class CustomerHomeComponent implements OnInit {
 
   //---Declaration of some Variables 
 
-  custIdOfLoggedIn:number=2;
+  custIdOfLoggedIn:string='';
   showloanDetails:boolean=false;
   //---
 
   constructor(public service:CustomerService) { }
 
   ngOnInit(): void {
+    this.custIdOfLoggedIn = localStorage.getItem('Id');
     console.log('Calling The Method to get the Details of Loans ');
     this.service.GetLoansOfCustomer(this.custIdOfLoggedIn);
   }

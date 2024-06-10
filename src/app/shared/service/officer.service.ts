@@ -19,7 +19,7 @@ export class OfficerService {
   
   // declaring a global array of instance to store the Details to Verify
   listOfVerificationDetails:VerificationDetails[]=[];
-  staffId:number=4; // later we will get it from Local storage
+  staffId:string=localStorage.getItem('Id'); // later we will get it from Local storage
   GetDetailsOfAllToVerify(){
     // so based on the officer if only we can get the Details 
 

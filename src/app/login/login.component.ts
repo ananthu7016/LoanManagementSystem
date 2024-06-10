@@ -42,7 +42,15 @@ export class LoginComponent implements OnInit {
 
   }
 
+  //#endregion
 
+
+  //#region Toggle registration form 
+  toggleRegistrationForm:boolean = false;
+
+  ShowRegistrationForm(){
+    this.toggleRegistrationForm = !this.toggleRegistrationForm;
+  }
   //#endregion
 
 }

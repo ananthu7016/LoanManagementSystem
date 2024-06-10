@@ -78,11 +78,10 @@
         <form (ngSubmit)="AssignOfficerForVerification()">
             <label>Assign a Officer for Verification</label>
             <select class="form-control" name="staffId" #staffId="ngModel" [(ngModel)]="detailsToAssignOfficer.staffId">
-                <option>--Choose a Officer</option>
+                <option [value]='0'>--Choose a Officer</option>
                 <option *ngFor="let o of service.detailsOfOfficer" [value]="o.id">{{o.name}}</option>
             </select>
-
-            <button class="btn btn-success">Assign</button>
+            <button class="btn btn-success" [disabled]="detailsToAssignOfficer.staffId == 0">Assign</button>
         </form>
 
     </div>
